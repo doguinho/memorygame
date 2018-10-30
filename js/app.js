@@ -1,15 +1,19 @@
 
 var cardList = [].slice.call(document.querySelectorAll(".card"));
 var openCards = [];
+var deck = document.querySelector(".deck"); 
 
 cardList = shuffle(cardList);
 
+deck.innerHTML = "";
+
 for (var i = 0; i < cardList.length; i++) {
     var card = cardList[i];
-    card.classList.remove("match", "open", "show");
+    clearCard(card);
     card.addEventListener("click", function(){
         showCard(this);
-    });    
+    });
+    deck.appendChild(card);
 }
 
 function showCard(el){
@@ -17,17 +21,34 @@ function showCard(el){
     addToOpen(el);    
 }
 
+function clearCard(card){
+    card.classList.remove("match", "open", "show");
+}
+
 function addToOpen(el) {
-    if (openCards.length > 0) {
-        var last = openCards[openCards.length - 1];                
-        // var lista = last_element.querySelector(".fa").getAttribute("class");
-        if (last.dataset.cardName == el.dataset.cardName){
-            console.log(true);    
-        }
         
+    if (openCards.length > 0) {
+
+        var last = openCards[openCards.length - 1];                
+
+        if (last.dataset.cardName == el.dataset.cardName){
+            matchCards(el,last);
+            openCards = [];
+        } else {
+            openCards.pop();    
+            clearCard(last);
+            clearCard(el);
+        } 
+
+    } else {
+        openCards.push(el);
     }
     
-    openCards.push(el); 
+}
+
+function matchCards(el,last){
+    el.classList.add("match");
+    last.classList.add("match");
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -47,7 +68,6 @@ function shuffle(array) {
 
 /*
  * set up the event listener for a card. If a card is clicked:
- *    - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
