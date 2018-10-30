@@ -18,12 +18,15 @@ function showCard(el){
 }
 
 function addToOpen(el) {
-    var last_element = null;
     if (openCards.length > 0) {
-        last_element = openCards[openCards.length - 1];
-        last_element
+        var last = openCards[openCards.length - 1];                
+        // var lista = last_element.querySelector(".fa").getAttribute("class");
+        if (last.dataset.cardName == el.dataset.cardName){
+            console.log(true);    
+        }
+        
     }
-    console.log(last_element);
+    
     openCards.push(el); 
 }
 
@@ -44,9 +47,7 @@ function shuffle(array) {
 
 /*
  * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
+ *    - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
