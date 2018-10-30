@@ -1,12 +1,30 @@
 
 var cardList = [].slice.call(document.querySelectorAll(".card"));
+var openCards = [];
 
 cardList = shuffle(cardList);
 
 for (var i = 0; i < cardList.length; i++) {
     var card = cardList[i];
     card.classList.remove("match", "open", "show");
-    console.log(card);
+    card.addEventListener("click", function(){
+        showCard(this);
+    });    
+}
+
+function showCard(el){
+    el.classList.add("open","show");
+    addToOpen(el);    
+}
+
+function addToOpen(el) {
+    var last_element = null;
+    if (openCards.length > 0) {
+        last_element = openCards[openCards.length - 1];
+        last_element
+    }
+    console.log(last_element);
+    openCards.push(el); 
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -23,7 +41,6 @@ function shuffle(array) {
 
     return array;
 }
-
 
 /*
  * set up the event listener for a card. If a card is clicked:
