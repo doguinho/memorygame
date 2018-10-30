@@ -1,19 +1,25 @@
 
 var cardList = [].slice.call(document.querySelectorAll(".card"));
 var openCards = [];
+var counter = 0;
 var deck = document.querySelector(".deck"); 
 
-cardList = shuffle(cardList);
+start();
 
-deck.innerHTML = "";
+function start() {
 
-for (var i = 0; i < cardList.length; i++) {
-    var card = cardList[i];
-    clearCard(card);
-    card.addEventListener("click", function(){
-        showCard(this);
-    });
-    deck.appendChild(card);
+    cardList = shuffle(cardList);
+
+    deck.innerHTML = "";
+
+    for (var i = 0; i < cardList.length; i++) {
+        var card = cardList[i];
+        clearCard(card);
+        card.addEventListener("click", function(){
+            showCard(this);
+        });
+        deck.appendChild(card);
+    }
 }
 
 function showCard(el){
@@ -23,6 +29,12 @@ function showCard(el){
 
 function clearCard(card){
     card.classList.remove("match", "open", "show");
+}
+
+function addCounter(){
+    counter++;
+    var moves = document.querySelector(".moves"); 
+    moves.innerHTML = counter;
 }
 
 function addToOpen(el) {
@@ -39,6 +51,8 @@ function addToOpen(el) {
             clearCard(last);
             clearCard(el);
         } 
+
+        addCounter();
 
     } else {
         openCards.push(el);
@@ -68,8 +82,5 @@ function shuffle(array) {
 
 /*
  * set up the event listener for a card. If a card is clicked:
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
