@@ -2,14 +2,13 @@
 var cardList = [].slice.call(document.querySelectorAll(".card"));
 var openCards = [];
 var counter = 0;
-var deck = document.querySelector(".deck"); 
 
-start();
+startGame();
 
-function start() {
+function startGame() {
 
     cardList = shuffle(cardList);
-
+    var deck = document.querySelector(".deck"); 
     deck.innerHTML = "";
 
     for (var i = 0; i < cardList.length; i++) {
@@ -20,6 +19,18 @@ function start() {
         });
         deck.appendChild(card);
     }
+
+    var btRestart = document.querySelector(".restart");
+    btRestart.addEventListener("click",function(){
+        restartGame();
+    });
+
+}
+
+function restartGame(){
+    counter = 0;
+    openCards = [];
+    startGame();
 }
 
 function showCard(el){
@@ -63,6 +74,19 @@ function addToOpen(el) {
 function matchCards(el,last){
     el.classList.add("match");
     last.classList.add("match");
+    cardList.pop();
+    cardList.pop();    
+    if (cardList.length == 0) {
+        endGame();
+    }
+}
+
+function endGame() {
+    var deck = document.querySelector(".deck");
+    deck.classList.add("hide");
+
+    var youWin = document.getElementById("youWin");
+    youWin.classList.remove("hide");
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -79,8 +103,3 @@ function shuffle(array) {
 
     return array;
 }
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
