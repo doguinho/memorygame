@@ -1,14 +1,13 @@
-/*
- * Create a list that holds all of your cards
- */
 
+var cardList = [].slice.call(document.querySelectorAll(".card"));
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+cardList = shuffle(cardList);
+
+for (var i = 0; i < cardList.length; i++) {
+    var card = cardList[i];
+    card.classList.remove("match", "open", "show");
+    console.log(card);
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
