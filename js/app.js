@@ -4,6 +4,7 @@ var matchedCards = 0;
 var counter = 0;
 var startTime;
 var endTime;
+var stars = document.querySelectorAll(".fa-star");
 
 document.getElementById("restart").addEventListener("click",function(){
     restartGame();
@@ -27,6 +28,12 @@ function startGame() {
     
     var deck = document.getElementById("deck"); 
     deck.innerHTML = "";
+
+    document.getElementById("starsScore").innerHTML = "";
+
+    for (var s of stars){
+        s.classList.remove("hide");
+    }
 
     for (var i = 0; i < cardList.length; i++) {
         var card = cardList[i].cloneNode(true);
@@ -64,6 +71,20 @@ function addCounter(){
     counter++;
     var moves = document.querySelector(".moves"); 
     moves.innerHTML = counter;
+
+    hideStars();
+}
+
+function hideStars(){
+    if (counter > 15) {
+        stars[0].classList.add("hide");
+    }
+    if (counter > 20) {
+        stars[1].classList.add("hide");
+    }
+    if (counter > 25) {
+        stars[2].classList.add("hide");
+    }    
 }
 
 function doNotMatch(el,last){
@@ -76,7 +97,9 @@ function matchCards(el, last) {
     last.classList.add("match");
     matchedCards++;
     if (cardList.length == matchedCards * 2) {
-        endGame();
+        setTimeout(function () {
+            endGame();
+        },1000);
     }
 }
 
@@ -127,6 +150,10 @@ function endGame() {
     document.getElementById("elapsed").innerHTML = elapsedTime();
 
     document.getElementById("score-panel").classList.toggle("hide");
+
+    var score = document.querySelector(".stars").cloneNode(true);
+    
+    document.getElementById("starsScore").appendChild(score);
 
 }
 
