@@ -47,6 +47,7 @@ function startGame() {
 function restartGame(){
     counter = 0;
     openCards = [];    
+    document.getElementById("score-panel").classList.remove("hide");
     startGame();
 }
 
@@ -124,6 +125,8 @@ function endGame() {
     youWin.classList.toggle("hide");
 
     document.getElementById("elapsed").innerHTML = elapsedTime();
+
+    document.getElementById("score-panel").classList.toggle("hide");
 
 }
 
