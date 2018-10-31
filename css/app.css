@@ -26,6 +26,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: relative;
 }
 
 h1 {
@@ -110,4 +111,46 @@ h1 {
 
 .hide {
     display: none !important;
+}
+
+/*CSS3 Button Generator https://www.designrush.com/resources/css3buttongenerator*/
+.butn {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border: 0;
+  border-radius: 28px;
+  font-family: inherit;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.butn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+.modal{
+    width: 300px;
+    height: auto;
+    background-color: #fff;
+    position: absolute;  
+    align-items: center;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    padding: 1em;
 }

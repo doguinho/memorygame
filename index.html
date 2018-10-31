@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>Matching Game</title>
-    <meta name="description" content="">
+    <meta name="description" content="Udacity Memory Game">
+    <meta name="author" content="Douglas Silvério Maria">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="css/app.css">
@@ -29,7 +30,7 @@
         	</div>
         </section>
 
-        <ul class="deck">
+        <ul id="deck" class="deck">
             <li class="card" data-card-name="diamond">
                 <i class="fa fa-diamond"></i>
             </li>
@@ -80,8 +81,15 @@
             </li>
         </ul>
 
-        <section id="youWin" class="hide">
-            <h1>Congratulations! You Win!</h1>
+        <section id="youWin" class="hide modal">
+            <h1>You Win! <br/>Congratulations!</h1>
+            <h3>You spent <span id="elapsed"></span></h3>
+            <button id="restart" class="butn">restart</button>
+        </section>
+
+        <section id="newgame" class="modal">         
+            <h1>New Game</h1>   
+            <button id="btn-newgame" class="butn">start</button>
         </section>
 
     </div>
