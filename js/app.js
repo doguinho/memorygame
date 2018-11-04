@@ -19,6 +19,8 @@ document.getElementById("btn-newgame").addEventListener("click", function () {
 
 function startGame() {
 
+    matchedCards = 0;
+
     startTime = new Date().getTime();
     
     cardList = shuffle(cardList);
