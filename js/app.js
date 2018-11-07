@@ -5,6 +5,9 @@ var counter = 0;
 var startTime;
 var endTime;
 var stars = document.querySelectorAll(".fa-star");
+var stopWatch = document.getElementById("stopWatch"),
+    seconds = 0, minutes = 0, hours = 0,
+    time;
 
 document.getElementById("restart").addEventListener("click", function () {
     restartGame();
@@ -48,6 +51,10 @@ function startGame() {
     btRestart.addEventListener("click", function () {
         restartGame();
     });
+
+    stopTimer();
+    clearTimer();
+    timer();
 
 }
 
@@ -163,6 +170,8 @@ function endGame() {
 
     document.getElementById("starsScore").appendChild(score);
 
+    stopTimer();
+
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -179,3 +188,37 @@ function shuffle(array) {
 
     return array;
 }
+
+
+/*timer https://jsfiddle.net/Daniel_Hug/pvk6p/ */
+
+function add() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+    
+    stopWatch.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+    timer();
+}
+
+function timer() {
+    time = setTimeout(add, 1000);
+}
+
+function stopTimer() {
+    clearTimeout(time);
+}
+
+function clearTimer() {
+    stopWatch.textContent = "00:00:00";
+    seconds = 0; minutes = 0; hours = 0;    
+}
+
+

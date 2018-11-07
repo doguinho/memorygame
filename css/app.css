@@ -35,6 +35,10 @@ h1 {
     font-weight: 300;
 }
 
+#stopWatch {
+    margin-left: 50px;
+}
+
 /*
  * Styles for the deck of cards
  */
