@@ -25,6 +25,13 @@ And execute index.html
 
 You can use any order modern browser you have.
 
+## Dependencies
+
+External requests call:
+
+- [font-awesome.min](https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css).
+- [Coda font-family](https://fonts.googleapis.com/css?family=Coda).
+
 ## Contributing
 
 You are free to play, costumize or even add new functions to it. And welcome to do pull requests.
@@ -35,9 +42,3 @@ License
 
 MIT
 
-##Dependencies
-
-index.html will do two external requests call:
-
-[font-awesome.min](https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css).
-[Coda font-family](https://fonts.googleapis.com/css?family=Coda).
